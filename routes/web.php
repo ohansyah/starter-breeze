@@ -20,13 +20,15 @@ Route::view('/', 'welcome');
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('dashboard', 'dashboard')->name('dashboard');
 
-    Route::prefix('student')
+    Route::middleware('role:student')
+        ->prefix('student')
         ->name('student.')
         ->group(function () {
             Route::get('timetable', [TimetableController::class, 'index'])->name('timetable');
         });
 
-    Route::prefix('teacher')
+    Route::middleware('role:teacher')
+        ->prefix('teacher')
         ->name('teacher.')
         ->group(function () {
             Route::get('timetable', [TeacherTimetable::class, 'index'])->name('timetable');

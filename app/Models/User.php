@@ -52,4 +52,9 @@ class User extends Authenticatable
             2 => 'teacher.timetable'
         };
     }
+
+    public function Role()
+    {
+        return $this->belongsTo(Role::class);
+    }
 }
