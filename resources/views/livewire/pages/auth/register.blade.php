@@ -35,7 +35,7 @@ new #[Layout('layouts.guest')] class extends Component
 
         Auth::login($user);
 
-        $this->redirect(RouteServiceProvider::HOME, navigate: true);
+        $this->redirect(route(auth()->user()->role_route), navigate: true);
     }
 }; ?>
 
